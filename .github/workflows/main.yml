@@ -6,6 +6,8 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
+      env:
+        SANITY_AUTH: ${{ secrets.SANITY_AUTH_TOKEN }}
       - uses: actions/checkout@v2
       - name: Setup Node.js environment
         uses: actions/setup-node@v1.4.2
@@ -17,4 +19,4 @@ jobs:
       - name: Deploy Sanity
         run: |
           # Make sure to add a secret for SANITY_AUTH_TOKEN
-          SANITY_AUTH_TOKEN=$env:SANITY_AUTH_TOKEN yarn sanity deploy
+          "$env:SANITY_AUTH" yarn sanity deploy
