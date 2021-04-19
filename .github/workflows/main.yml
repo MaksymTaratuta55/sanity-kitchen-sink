@@ -15,7 +15,5 @@ jobs:
         run: |
           yarn
       - name: Deploy Sanity
-        env:
-          SANITY_AUTH: ${{ secrets.SANITY_AUTH_TOKEN }}
         run: |
-          "$SANITY_AUTH" yarn sanity deploy
+        ${{ secrets.SANITY_AUTH_TOKEN }} yarn sanity deploy
